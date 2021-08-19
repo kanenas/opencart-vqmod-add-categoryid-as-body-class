@@ -1,1 +1,23 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+	<modification
+		xmlns="https://github.com/vqmod/vqmod"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="https://github.com/vqmod/vqmod https://raw.githubusercontent.com/vqmod/vqmod/master/vqmod.xsd"
+		>
+		<id><![CDATA[[VQMOD] Add category_id as <body> class]]></id>
+		<version>0.1.0</version>
+		<vqmver>2.6.6</vqmver>
+		<author>kanenas.net (aka Nikolas Branis) - nbran@kanenas.net</author>
+		<file path="catalog/controller/common/" name="header.php" error="log">
+			<operation error="skip">
+				<search position="after"><![CDATA[$class = '-' . $this->request->get['product_id'];]]></search>
+				<add><![CDATA[
+				// knns_add_categoryid_as_body_class.xml (start)
+				$knns_cat_path = str_replace("1166_","cat",$this->request->get['path']);
+				$knns_cat_id = substr($knns_cat_path, 0, strpos($knns_cat_path, '_'));
+				$class .= ' ' . $knns_cat_id;
+				// knns_add_categoryid_as_body_class.xml (end)
+				]]></add>
+			</operation>
+		</file>
+	</modification>
